@@ -3,6 +3,12 @@
 	color: #006699;
 }
 
+.slide p.note {
+	line-height: 1.2em;
+}
+
+
+
 .slide::after {
 	opacity: 0.2;
 }

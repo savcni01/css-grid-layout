@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>CSS Grids</title>
+	<title>Testing Strategy</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,607 +15,241 @@
 		<p>Vlad Mystetskyi, Nik Savchenko, <br>eXelate, A Nielsen Company</p>
 	</header>
 
+
 	<section class="slide grid">
 		<h2 class="shout">Testing Strategy</h2>
 	</section>
 
-	<section class="slide">
-		<img class="place" height="80%" src="pictures/waves_page_layout1.gif">
-	</section>
 
 	<section class="slide">
-		<h2>Web page layouts history</h2>
+		<h2>Test types</h2>
 		<ul>
-			<li>Ancients: Frames, Tables</li>
-			<li>Old school: divs, floats, blocks, absolute/relative</li>
-			<li>Deadlock: Flash, Template/Advanced Layout</li>
-			<li>Current: Flexbox, Grid Frameworks</li>
-			<li>Future: CSS Grid Layout + ...?</li>
+			<li class="next">Unit tests</li>
+			<li class="next">Component tests</li>
+			<li class="next">Integration tests</li>
+			<li class="next">E2E tests</li>
+			<li class="next">Sanity tests</li>
 		</ul>
 	</section>
 
-	<section class="slide">
-		<h2>Support</h2>
-		<p><a href="http://caniuse.com/#feat=css-grid">Can I use</a></p>
-		<div class="browsers">
-			<span><img src="pictures/chrome_128x128.png"></span>
-			<span><img src="pictures/firefox_128x128.png"></span>
-			<span><img src="pictures/safari_128x128.png"></span>
-			<span><img src="pictures/edge_128x128.png"><sup class="browsers__note">*</sup></span>
-			<span><img src="pictures/opera_128x128.png"></span>
-		</div>
-		<p class="note">* Old version of specification, Microsoft work on current version</p>
-	</section>
-
 
 	<section class="slide">
-		<h2>Grid Container</h2>
-		<div class="table">
-			<div class="table__line table__line-1"></div>
-			<div class="table__line table__line-4"></div>
-			<div class="table__line table__line-5"></div>
-			<div class="table__line table__line-8"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Grid Line</h2>
-		<div class="table">
-			<div class="table__line table__line-1 next"></div>
-			<div class="table__line table__line-2 next"></div>
-			<div class="table__line table__line-3 next"></div>
-			<div class="table__line table__line-4 next"></div>
-
-			<div class="table__line table__line-5 next"></div>
-			<div class="table__line table__line-6 next"></div>
-			<div class="table__line table__line-7 next"></div>
-			<div class="table__line table__line-8 next"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Grid Track</h2>
-		<div class="table">
-			<div class="table__line table__line-1"></div>
-			<div class="table__line table__line-2"></div>
-			<div class="table__line table__line-3"></div>
-			<div class="table__line table__line-4"></div>
-
-			<div class="table__line table__line-5"></div>
-			<div class="table__line table__line-6"></div>
-			<div class="table__line table__line-7"></div>
-			<div class="table__line table__line-8"></div>
-
-			<div class="table__box table__track-1"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Grid Track</h2>
-		<div class="table">
-			<div class="table__line table__line-1"></div>
-			<div class="table__line table__line-2"></div>
-			<div class="table__line table__line-3"></div>
-			<div class="table__line table__line-4"></div>
-
-			<div class="table__line table__line-5"></div>
-			<div class="table__line table__line-6"></div>
-			<div class="table__line table__line-7"></div>
-			<div class="table__line table__line-8"></div>
-
-			<div class="table__box table__track-2"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Grid Cell</h2>
-		<div class="table">
-			<div class="table__line table__line-1"></div>
-			<div class="table__line table__line-2"></div>
-			<div class="table__line table__line-3"></div>
-			<div class="table__line table__line-4"></div>
-
-			<div class="table__line table__line-5"></div>
-			<div class="table__line table__line-6"></div>
-			<div class="table__line table__line-7"></div>
-			<div class="table__line table__line-8"></div>
-
-			<div class="table__box table__cell-1"></div>
-			<div class="table__box table__cell-2"></div>
-			<div class="table__box table__cell-3"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Grid Area</h2>
-		<div class="table">
-			<div class="table__line table__line-1"></div>
-			<div class="table__line table__line-2"></div>
-			<div class="table__line table__line-3"></div>
-			<div class="table__line table__line-4"></div>
-
-			<div class="table__line table__line-5"></div>
-			<div class="table__line table__line-6"></div>
-			<div class="table__line table__line-7"></div>
-			<div class="table__line table__line-8"></div>
-
-			<div class="table__box table__area"></div>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2>Prepare</h2>
-		<pre>
-			<code>&lt;div class="<mark>sample</mark>"&gt;</code>
-			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
-			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
-			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
-			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
-			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
-			<code>&lt;/div&gt;</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Prepare</h2>
-		<pre>
-			<code>.sample { <span class="comment">/* Пока пусто */</span> }</code>
-			<code>.sample__item {</code>
-			<code>	background: <mark style="background: #7D7D7D;color: #FFF">#7D7D7D</mark>;</code>
-			<code>	}</code>
-			<code>.sample__item<mark>:first-child</mark> { background: <mark style="background: #006699;color: #FFF">#006699</mark> }</code>
-			<code>.sample__item<mark>:last-child</mark> { background: <mark style="background: #44AAAA;color: #FFF">#44AAAA</mark> }</code>
-			<code>.sample__item<mark>::before</mark> { content: <mark>counter(list)</mark> }</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Blank. No Grid</h2>
-		<div class="sample sample--disabled">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2>Auto rendering</h2>
-		<pre class="place" style="font-size: 50px">
-			<code>.sample {</code>
-			<code>	<mark>display: grid;</mark></code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-
-	<section class="slide">
-		<h2>First grid</h2>
-		<div class="sample">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2>Columns?</h2>
-		<pre>
-			<code><mark>.sample</mark> {</code>
-			<code>	grid-template-columns: <mark>1fr 1fr</mark>;</code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Columns!</h2>
-		<div class="sample sample--two-cols">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>More items...</h2>
-		<div class="sample sample--two-cols">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>More...</h2>
-		<div class="sample sample--two-cols">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>...</h2>
-		<div class="sample sample--two-cols">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>...</h2>
-		<div class="sample sample--two-cols">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Three columns?</h2>
-		<pre>
-			<code><mark>.sample</mark> {</code>
-			<code>	grid-template-columns: <mark>1fr 1fr 1fr</mark>;</code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Three columns</h2>
-		<div class="sample sample--three-cols">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Proportionally?</h2>
-		<pre>
-			<code><mark>.sample</mark> {</code>
-			<code>	grid-template-columns: <mark>1fr 2fr 3fr</mark>;</code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Proportionally</h2>
-		<div class="sample sample--three-cols-asc">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Fix?</h2>
-		<pre>
-			<code><mark>.sample</mark> {</code>
-			<code>	grid-template-columns: <mark>250px 1fr 250px</mark>;</code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Fix</h2>
-		<div class="sample sample--three-cols-fixed">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2>Rows?</h2>
-		<pre>
-			<code><mark>.sample</mark> {</code>
-			<code>	grid-template-<mark>columns</mark>: 150px <mark>1fr</mark> 150px;</code>
-			<code>	grid-template-<mark>rows</mark>:	150px <mark>1fr</mark> 150px;</code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Rows</h2>
-		<div class="sample sample--three-cols-rows">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2 class="shout">Manual tuning</h2>
-	</section>
-
-	<section class="slide white">
-		<h2>Lines</h2>
-		<div class="table">
-			<div class="table__line table__line-1 next"></div>
-			<div class="table__line table__line-2 next"></div>
-			<div class="table__line table__line-3 next"></div>
-			<div class="table__line table__line-4 next"></div>
-
-			<div class="table__line table__line-5 next"></div>
-			<div class="table__line table__line-6 next"></div>
-			<div class="table__line table__line-7 next"></div>
-			<div class="table__line table__line-8 next"></div>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2>Prepare</h2>
-		<div class="sample sample--manual">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-
-
-	<section class="slide">
-		<h2>Header and Footer?</h2>
-		<pre>
-			<code><mark>.sample</mark> :nth-child(1) {</code>
-			<code>	grid-column: <mark>1 / 4</mark>;</code>
-			<code>	}</code>
-			<code><mark>.sample</mark> :nth-child(5) {</code>
-			<code>	grid-column: <mark>1 / 4</mark>;</code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>Header and Footer</h2>
-		<div class="sample sample--manual-header-footer">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Footer and header?</h2>
-		<div class="pre-grid">
-			<pre class="half">
-				<code><mark>.sample</mark> :nth-child(1) {</code>
-				<code>	grid-row: <mark>3 / 4</mark>;</code>
-				<code>	}</code>
-				<code><mark>.sample</mark> :nth-child(5) {</code>
-				<code>	grid-row: <mark>1 / 2</mark>;</code>
-				<code>	}</code>
-			</pre>
-			<pre class="half">
-				<code><mark>.sample</mark> :nth-child(1) {</code>
-				<code>	grid-area: <mark>3 / 1 / 4 / 4</mark>;</code>
-				<code>	}</code>
-				<code><mark>.sample</mark> :nth-child(5) {</code>
-				<code>	grid-area: <mark>1 / 1 / 2 / 4</mark>;</code>
-				<code>	}</code>
-			</pre>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2>Footer and header</h2>
-		<div class="sample sample--manual-footer-header">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Area pattern, Prepare</h2>
-		<div class="sample">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Area pattern</h2>
-		<pre>
-			<code><mark>.sample</mark> {</code>
-			<code>	grid-template-areas:</code>
-			<code>		<mark>'a a a a'</mark></code>
-			<code>		'b <mark class="important">c c</mark> d'</code>
-			<code>		<mark>'e e e e'</mark>;</code>
-			<code>	}</code>
-		</pre>
-	</section>
-
-	<section class="slide">
-		<h2>A B C D E</h2>
-		<pre>
-			<code>.sample :nth-child(<mark>1</mark>) { grid-area: <mark>a</mark> }</code>
-			<code>.sample :nth-child(<mark>2</mark>) { grid-area: <mark>b</mark> }</code>
-			<code>.sample :nth-child(<mark>3</mark>) { grid-area: <mark>c</mark> }</code>
-			<code>.sample :nth-child(<mark>4</mark>) { grid-area: <mark>d</mark> }</code>
-			<code>.sample :nth-child(<mark>5</mark>) { grid-area: <mark>e</mark> }</code>
-		</pre>
-	</section>
-
-	<section class="slide white">
-		<div class="sample sample--ascii-sorted sample--whole">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>B A E C D</h2>
-		<pre>
-			<code>.sample :nth-child(<mark>1</mark>) { grid-area: <mark>b</mark> }</code>
-			<code>.sample :nth-child(<mark>2</mark>) { grid-area: <mark>a</mark> }</code>
-			<code>.sample :nth-child(<mark>3</mark>) { grid-area: <mark>e</mark> }</code>
-			<code>.sample :nth-child(<mark>4</mark>) { grid-area: <mark>c</mark> }</code>
-			<code>.sample :nth-child(<mark>5</mark>) { grid-area: <mark>d</mark> }</code>
-		</pre>
-	</section>
-
-	<section class="slide white">
-		<div class="sample sample--ascii-random sample--whole">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide">
-		<h2>Area pattern</h2>
-		<div class="pre-grid">
-			<pre class="half">
-				<code><mark>.sample</mark> {</code>
-				<code>	grid-template-areas:</code>
-				<code>		'a a a a'</code>
-				<code>		<mark>'b c c d'</mark></code>
-				<code>		'e e e e';</code>
-				<code>	}</code>
-			</pre>
-			<pre class="half">
-				<code><mark>.sample</mark> {</code>
-				<code>	grid-template-areas:</code>
-				<code>		'a a a a'</code>
-				<code>		<mark>'b c c d'</mark></code>
-				<code>		<mark>'b c c d'</mark></code>
-				<code>		'e e e e';</code>
-				<code>	}</code>
-			</pre>
-	</section>
-
-	<section class="slide white">
-		<div class="sample sample--ascii-sorted sample--whole">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-	<section class="slide white">
-		<div class="sample sample--ascii-tall sample--whole">
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-			<div class="sample__item"></div>
-		</div>
-	</section>
-
-
-	<section class="slide">
-		<h2>Grid Container Properties</h2>
-		<ul class="double">
-			<li><code>display</code></li>
-			<li><code>grid-template-columns</code></li>
-			<li><code>grid-template-rows</code></li>
-			<li><code>grid-template-areas</code></li>
-			<li><code>grid-template</code></li>
-			<li><code>grid-column-gap</code></li>
-			<li><code>grid-row-gap</code></li>
-			<li><code>grid-gap</code></li>
-			<li><code>justify-items</code></li>
-			<li><code>align-items</code></li>
-			<li><code>justify-content</code></li>
-			<li><code>align-content</code></li>
-			<li><code>grid-auto-columns</code></li>
-			<li><code>grid-auto-rows</code></li>
-			<li><code>grid-auto-flow</code></li>
-			<li><code>grid</code></li>
+		<h2>Conventions, concepts, patterns</h2>
+		<ul>
+			<li class="next">File Co-location</li>
+			<li class="next">Reuse tests</li>
+			<li class="next">Test Data</li>
+			<li class="next">Page Object</li>
 		</ul>
 	</section>
 
+
 	<section class="slide">
-		<h2>Grid Item Properties</h2>
-		<ul class="double">
-			<li><code>grid-column-start</code></li>
-			<li><code>grid-column-end</code></li>
-			<li><code>grid-row-start</code></li>
-			<li><code>grid-row-end</code></li>
-			<li><code>grid-column</code></li>
-			<li><code>grid-row</code></li>
-			<li><code>grid-area</code></li>
-			<li><code>justify-self</code></li>
-			<li><code>align-self</code></li>
+		<h2>File Co-location</h2>
+		<ul>
+			<li><b>For code</b><br>(view, actions, reducers, controllers, models, collections, etc.)</li>
+			<li><b>For test</b><br>(specs, po, test, data, fixtures, etc.)</li>
 		</ul>
-		<p><a href="http://chris.house/blog/a-complete-guide-css-grid-layout/">A Complete Guide to CSS Grid Layout</a></p>
+		<p class="note">Some links:
+			<a href="https://marmelab.com/blog/2015/12/17/react-directory-structure.html">React dir structure</a>,
+			<a href="http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript">Code organization</a>
+			<a href="http://islovely.co/posts/colocating-unit-tests/">Co-location Unit tests</a>
+		</p>
+	</section>
+
+
+	<section class="slide">
+		<h2>Reuse Tests</h2>
+		<p>Example: <a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/master/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorTest.coffee">Seed Selector Test</a></p>
+		<pre><code>checkHeaders: (<mark>checkData</mark>) ->
+  test = this
+   describe "Check header-bar rendering:", ->
+     it 'should have correct selected seeds header', () ->
+       expect(test.moSeedsSelector.getBemEl('seeds'))
+			.toHaveText(<mark>checkData.seeds</mark>)
+...</code></pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Test Data</h2>
+		<ul>
+			<li>Don't hardcore Names, Ids, Check values, etc.</li>
+			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/indexReportTestData.coffee">Index Report Test Data</a></li>
+			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/master/src/main/modules/indexReport/seedsSelector/specs/seedsSelectorTestData.coffee">Seed Selector Test Data</a></li>
+		</ul>
+	</section>
+
+
+	<section class="slide">
+		<h2>Page Object</h2>
+		<ul>
+			<li>We try to split out tests for reusable parts and use PageObject patterns not only for E2E tests, but for Component and Integrations as well.</li>
+			<li><a href="http://webdriver.io/guide/testrunner/pageobjects.html">Page Object</a></li>
+			<li><a href="https://www.thoughtworks.com/insights/blog/using-page-objects-overcome-protractors-shortcomings">Page Object Protractor</a></li>
+			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/IndexReportPageObject.coffee">Index Report Page Object</a></li>
+			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorPageObject.coffee">Seed Selector Page Object</a></li>
+			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorModuleObject.coffee">Module Object</a></li>
+		</ul>
+	</section>
+
+
+	<section class="slide">
+		<h2>Tests for ... ?</h2>
+		<ul>
+			<li class="next">New Component</li>
+			<li class="next">New module/page/app</li>
+			<li class="next">Small additional functionality at component</li>
+			<li class="next">Additional functionality at current module</li>
+			<li class="next">Old component</li>
+			<li class="next">Old modules/pages/apps</li>
+		</ul>
+	</section>
+
+
+	<section class="slide">
+		<h2 class="shout">Unit Tests</h2>
+	</section>
+
+
+	<section class="slide">
+		<h2>Unit tests for <a href="https://github.com/xl8/webapps-frontend-components/tree/master/src/main/shared/components/sort">Sort Component</a></h2>
+		<pre><code>_onRenderStateChanged: ->
+  @toggleSort(@state.get('isSort'), @state.get('isDesc'))
+...
+describe 'When call _onRenderStateChanged callback:', ->
+  it 'should call toggleSort with isSort and isDesc params form renderState', ->
+    spyOn(sortView, 'toggleSort')
+    sortView._onRenderStateChanged()
+	expect(sortView.toggleSort).<mark>toHaveBeenCalled()</mark>
+...</code></pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Code refactoring for make it testable</h2>
+		<p>Example: <a href="https://github.com/xl8/webapps-frontend-components/tree/master/src/main/shared/components/sort">StackBar Component</a></p>
+		<p>Original code:</p>
+		<p><img src="pictures/testing/unitRefactor1.png"></p>
 	</section>
 
 	<section class="slide">
-		<h2>Migration</h2>
-		<div class="pre-grid">
-			<pre class="half">
-				<code>@supports (display: grid) {</code>
-				<code>  .grid {</code>
-				<code>    display: <mark>grid</mark>;</code>
-				<code>  }</code>
-			</pre>
-			<pre class="half">
-				<code>@supports <mark>not</mark> (display: grid) {</code>
-				<code>  .grid {</code>
-				<code>    display: <mark>flex</mark>;</code>
-				<code>  }</code>
-			</pre>
-		</div>
-		<p><a href="https://alistapart.com/article/practical-grid">Practical CSS Grid: Adding Grid to an Existing Design</a>, by Eric Meyer</p>
+		<h2>Refactoring: step #1</h2>
+		<p><img src="pictures/testing/unitRefactor2.png"></p>
+		<p class="note">we still have @model - it mean for test different variants of values - widths we need to create a lot of instances of out class with different params.</p>
 	</section>
 
 	<section class="slide">
-		<h2>Forget Flexbox?</h2>
+		<h2>Refactoring: step #2</h2>
+		<p ><img src="pictures/testing/unitRefactor3.png"></p>
+		<p class="note">Now we can test static stackBarWidth function logic for different cases without creating instances of our class.</p>
+	</section>
+
+
+	<section class="slide">
+		<h2>Unit tests is not only functions</h2>
+		<ul>
+			<li class="next">Index Report Controller:
+				<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/IndexReportController.coffee">Code</a>,
+				<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/controller/specs.coffee">Tests</a>,
+				<a href="https://docs.google.com/document/d/1F2FzQwvqYCwqYOYNWC1I8QkZOf08aOhpsYTPaxbaY6U/edit#heading=h.7152vtt3w56e">Description</a>
+			</li>
+
+			<li class="next">Indexed Segments:
+				<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/indexedSegments/IndexedSegmentsCollection.coffee">Collection</a>,
+				<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/indexedSegments/IndexedSegmentsModel.coffee">Model</a>
+				and <a href="https://github.com/xl8/webapps-maxdmp-frontend/tree/develop/src/main/modules/indexReport/indexedSegments/specs">Tests</a>
+			</li>
+
+ 			<li class="next">Props Tools:
+				<a href="https://github.com/xl8/webapps-frontend-components/blob/master/src/main/shared/components/tools/propsTool.coffee">Code</a>,
+				<a href="https://github.com/xl8/webapps-frontend-components/tree/master/src/main/shared/components/tools/specs">Tests</a>,
+				<a href="https://docs.google.com/document/d/1F2FzQwvqYCwqYOYNWC1I8QkZOf08aOhpsYTPaxbaY6U/edit#heading=h.kwa20m8doc6y">Description</a>
+			</li>
+
+		</ul>
+	</section>
+
+
+
+	<section class="slide">
+		<h2 class="shout">Component tests</h2>
+	</section>
+
+
+	<section class="slide">
+		<h2>What are we testing?</h2>
+		<ul>
+			<li class="next"><b>Initialization</b> (check state, type and value of main properties, sub-objects, classes, etc.)</li>
+			<li class="next"><b>Rendering</b> (check $el, template, classes, texts, values at html)</li>
+			<li class="next"><b>Sub-view</b> (tooltips, child views, etc)</li>
+			<li class="next"><b>Actions</b> (click, change state, change input, etc.)</li>
+		</ul>
+		<p class="next"><a href="https://github.com/xl8/webapps-frontend-components/blob/master/src/main/shared/components/">Examples</a></p>
+	</section>
+
+
+	<section class="slide">
+		<h2>Options and TestData IconTooltip Component</h2>
+		<p class="place"><img src="pictures/testing/testData.png"></p>
+	</section>
+
+
+	<section class="slide">
+		<p class="place"><img src="pictures/testing/testData1.png"></p>
+	</section>
+
+
+	<section class="slide">
+		<p class="place"><img src="pictures/testing/testData2.png"></p>
+	</section>
+
+
+	<section class="slide">
+		<p class="place"><img src="pictures/testing/testData3.png"></p>
+	</section>
+
+
+	<section class="slide">
+		<p class="place"><img src="pictures/testing/testData4.png"></p>
+	</section>
+
+
+
+
+	<section class="slide">
+		<h2 class="shout">Integration Tests</h2>
+	</section>
+
+
+	<section class="slide">
+		<h2 class="shout">Tests for new functionality at current modules</h2>
+	</section>
+
+
+
+
+
+
+	<section class="slide">
+		<h2>You have to add some cool quote at the end...</h2>
 		<figure>
 			<blockquote>
-				<p>... grid for the overall layout, a mix of nested flexboxes and grid for the components of the page, and finally block/inline/table layout at the "leaves" of the page, where the text and content live.</p>
+				<p>No amount of testing can prove a software right, a single test can prove a software wrong.</p>
 			</blockquote>
-			<figcaption>Tab Atkins, <a href="https://lists.w3.org/Archives/Public/www-style/2013May/0114.html">www-style</a></figcaption>
+			<figcaption>Amir Ghahrai, <a href="http://www.testingexcellence.com/author/amir-ghahrai/">Testing Excellence</a></figcaption>
 		</figure>
-		<p><a href="https://www.chenhuijing.com/blog/css-grid-flexbox-combo/">Grid + Flexbox: the best 1-2 punch in web layout</a>, by Chen Hui Jing</p>
 	</section>
 
 
 	<section class="slide">
-		<h2>Links</h2>
+		<h2>.. and some links :)</h2>
 		<ul class="double">
-			<li><a href="http://gridbyexample.com/">Grid by Example</a></li>
-			<li><a href="http://igalia.github.io/css-grid-layout/">CSS Grid Layout Examples</a></li>
-			<li><a href="http://chris.house/blog/a-complete-guide-css-grid-layout/">A Complete Guide to Grid</a></li>
-			<li><a href="http://labs.jensimmons.com/">Intro to CSS Grid</a></li>
-			<li><a href="https://www.w3.org/TR/css3-grid-layout/">CSS Grid Layout Module</a></li>
-			<li><a href="https://www.w3.org/TR/css-align-3/">CSS Box Alignment Module</a></li>
-			<li><a href="http://sokr.me/grl">Original presentation</a></li>
-			<li><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties">Visual Guide to Flexbox</a></li>
+			<li><a href="https://docs.google.com/document/d/14m6OhqTTaB2DokncrenT9mVtU1NB9MuDL6imgdh3T6c/edit#">Testing Pilot 1</a></li>
+			<li><a href="https://docs.google.com/document/d/1NmYXteIgFU82dWW9piR1KdHYDgzgZgaw-qdsS3ubH5E/edit">Pilot 2 - Profilabe audiences</a></li>
+			<li><a href="https://docs.google.com/document/d/1F2FzQwvqYCwqYOYNWC1I8QkZOf08aOhpsYTPaxbaY6U/edit#">Unit tests</a></li>
+			<li><a href="https://docs.google.com/document/d/1WZyhlyrJHatHCOKKM-EVbdECJnJlKZamoDoPYE2yA1A/edit#">Index report page tests</a></li>
+
 		</ul>
 		<p class="note">Created with <a href="https://shwr.me/">Shower</a></p>
 		<img class="place bottom right" width="100px" src="pictures/logo.png">
