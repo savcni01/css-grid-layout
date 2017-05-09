@@ -1,0 +1,283 @@
+
+.slide h2 {
+	color: #006699;
+}
+
+.slide p.note {
+	line-height: 1.2em;
+}
+
+
+
+.slide::after {
+	opacity: 0.2;
+}
+
+.pre-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	font: 30px PT Mono, sans-serif;
+}
+.pre-grid pre {
+	font-size: .7em;
+}
+
+
+.browsers {
+	margin: 3em 0;
+	display: flex;
+	justify-content: space-around;
+}
+
+.slide sup.browsers__note {
+	font-size: 1.5em;
+	top: -2.5em;
+	color: #7D7D7D;
+}
+
+/* Sample */
+
+.sample {
+	position: absolute;
+	top: 165px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 0 30px 30px 0;
+	counter-reset: list;
+	font: 50px PT Mono, sans-serif;
+}
+.sample__item {
+	margin: 30px 0 0 30px;
+	background: #7D7D7D;
+	border-radius: 15px;
+	color: #FFF;
+	display: flex;
+}
+.sample__item:first-child {
+	background: #006699;
+}
+.sample__item:last-child {
+	background: #44AAAA;
+}
+.sample__item::before {
+	margin: auto;
+	counter-increment: list;
+	content: counter(list);
+}
+
+/* Samples */
+
+.sample {
+	display: grid;
+}
+.sample--disabled {
+	display: block;
+}
+.sample--two-cols {
+	grid-template-columns: 1fr 1fr;
+}
+.sample--three-cols {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.sample--three-cols-asc {
+	grid-template-columns: 1fr 2fr 3fr;
+}
+.sample--three-cols-fixed {
+	grid-template-columns: 200px 1fr 200px;
+}
+.sample--three-cols-rows {
+	grid-template-rows: 90px 1fr 90px;
+	grid-template-columns: 90px 1fr 90px;
+}
+
+/* Manual */
+
+.sample--manual {
+	grid-template-columns: 1fr 1fr 1fr;
+}
+.sample--manual-header-footer :nth-child(1) {
+	grid-column: 1 / 4;
+}
+.sample--manual-header-footer :nth-child(5) {
+	grid-column: 1 / 4;
+}
+.sample--manual-footer-header :nth-child(1) {
+	grid-row: 3 / 4;
+	grid-column: 1 / 4;
+}
+.sample--manual-footer-header :nth-child(5) {
+	grid-row: 1 / 2;
+	grid-column: 1 / 4;
+}
+
+/* Whole */
+
+.sample.sample--whole {
+	top: 0
+}
+
+/* Sorted */
+
+.sample--ascii-sorted {
+	grid-template-areas:
+		'a a a a'
+		'b c c d'
+		'e e e e';
+}
+.sample--ascii-sorted :nth-child(1) {
+	grid-area: a;
+}
+.sample--ascii-sorted :nth-child(2) {
+	grid-area: b;
+}
+.sample--ascii-sorted :nth-child(3) {
+	grid-area: c;
+}
+.sample--ascii-sorted :nth-child(4) {
+	grid-area: d;
+}
+.sample--ascii-sorted :nth-child(5) {
+	grid-area: e;
+}
+
+/* Random */
+
+.sample--ascii-random {
+	display: grid;
+	grid-template-areas:
+		'a a a a'
+		'b c c d'
+		'e e e e';
+}
+.sample--ascii-random :nth-child(1) {
+	grid-area: b;
+}
+.sample--ascii-random :nth-child(2) {
+	grid-area: a;
+}
+.sample--ascii-random :nth-child(3) {
+	grid-area: c;
+}
+.sample--ascii-random :nth-child(4) {
+	grid-area: e;
+}
+.sample--ascii-random :nth-child(5) {
+	grid-area: d;
+}
+
+/* Tall */
+
+.sample--ascii-tall {
+	display: grid;
+	grid-template-areas:
+		'a a a a'
+		'b c c d'
+		'b c c d'
+		'b c c d'
+		'b c c d'
+		'b c c d'
+		'e e e e';
+}
+.sample--ascii-tall :nth-child(1) {
+	grid-area: a;
+}
+.sample--ascii-tall :nth-child(2) {
+	grid-area: b;
+}
+.sample--ascii-tall :nth-child(3) {
+	grid-area: c;
+}
+.sample--ascii-tall :nth-child(4) {
+	grid-area: d;
+}
+.sample--ascii-tall :nth-child(5) {
+	grid-area: e;
+}
+
+
+/* Table */
+
+.table {
+	position: absolute;
+	top: 160px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 30px 50px;
+	display: grid;
+	grid-template-rows: 10px 1fr 10px 1fr 10px 1fr 10px;
+	grid-template-columns: 10px 1fr 10px 1fr 10px 1fr 10px;
+}
+
+.table__line {
+	background: #585A5E;
+}
+
+.table__box {
+	background: rgba(162, 162, 162, 0.7);
+}
+
+/* Line */
+
+.table__line-1 {
+	grid-area: 1 / 1 / 2 / 8;
+}
+
+.table__line-2 {
+	grid-area: 3 / 1 / 4 / 8;
+}
+
+.table__line-3 {
+	grid-area: 5 / 1 / 6 / 8;
+}
+
+.table__line-4 {
+	grid-area: 7 / 1 / 8 / 8;
+}
+
+.table__line-5 {
+	grid-area: 1 / 1 / 8 / 2;
+}
+
+.table__line-6 {
+	grid-area: 1 / 3 / 8 / 4;
+}
+
+.table__line-7 {
+	grid-area: 1 / 5 / 8 / 6;
+}
+
+.table__line-8 {
+	grid-area: 1 / 7 / 8 / 8;
+}
+
+/* Track */
+
+.table__track-1 {
+	grid-area: 4 / 2 / 5 / 7;
+}
+
+.table__track-2 {
+	grid-area: 2 / 4 / 7 / 5;
+}
+
+/* Cell */
+
+.table__cell-1 {
+	grid-area: 2 / 2 / 3 / 3;
+}
+
+.table__cell-2 {
+	grid-area: 6 / 2 / 7 / 3;
+}
+
+.table__cell-3 {
+	grid-area: 4 / 6 / 5 / 7;
+}
+
+/* Area */
+
+.table__area {
+	grid-area: 2 / 2 / 7 / 5;
+}
