@@ -1,205 +1,629 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Shower Presentation Engine</title>
+	<title>CSS Grids</title>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="node_modules/shower-ribbon/styles/screen-16x10.css">
+	<link rel="stylesheet" href="a.css">
 </head>
 <body class="shower list">
 
 	<header class="caption">
-		<h1>Shower Presentation Engine</h1>
-		<p>Yours Truly, Famous Inc.</p>
+		<h1>CSS Grids</h1>
+		<p>Nik Savchenko, <br>eXelate, A Nielsen Company</p>
 	</header>
 
-	<section class="slide" id="cover">
-		<h2>Shower Presentation Engine</h2>
-		<p>Brought to you by <a href="http://pepelsbey.net">Vadim Makeev</a></p>
-		<figure>
-			<img class="cover" src="pictures/cover.jpg" alt="Hands on the orange typewriter in a park">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
-		</figure>
-		<style>
-			#cover h2 {
-				margin:30px 0 0;
-				color:#FFF;
-				text-align:center;
-				font-size:70px;
-				}
-			#cover p {
-				margin:10px 0 0;
-				text-align:center;
-				color:#FFF;
-				font-style:italic;
-				font-size:20px;
-				}
-				#cover p a {
-					color:#FFF;
-					}
-		</style>
+	<section class="slide grid">
+		<h2 class="shout">CSS Grids</h2>
 	</section>
 
 	<section class="slide">
-		<h2>Shower key features</h2>
-		<ol>
-			<li>Built on HTML, CSS and vanilla JavaScript</li>
-			<li>Works in all modern browsers</li>
-			<li>Themes are separated from engine</li>
-			<li>Modular and extensible</li>
-			<li>Fully keyboard accessible</li>
-			<li>Printable to PDF</li>
-		</ol>
-		<p class="note">Shower ['ʃəuə] noun. A person or thing that shows.</p>
+		<img class="place" height="80%" src="pictures/waves_page_layout1.gif">
 	</section>
 
 	<section class="slide">
-		<h2>Plain text on your slides</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur <a href="#4">adipisicing</a> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, <em>quis nostrud</em> exercitation ullamco laboris <strong>nisi ut aliquip</strong> ex ea commodo consequat. Duis aute irure <i>dolor</i> in reprehenderit in voluptate velit esse cillum <b>dolore</b> eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in <code>&lt;culpa&gt;</code> qui officia deserunt mollit anim id est laborum.</p>
+		<h2>Web page layouts history</h2>
+		<ul>
+			<li>Ancients: Frames, Tables</li>
+			<li>Old school: divs, floats, blocks, absolute/relative</li>
+			<li>Deadlock: Flash, Template/Advanced Layout</li>
+			<li>Current: Flexbox, Grid Frameworks</li>
+			<li>Future: CSS Grid Layout + ...?</li>
+		</ul>
 	</section>
 
 	<section class="slide">
-		<h2>Two columns if you like</h2>
-		<p class="double">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+		<h2>Support</h2>
+		<p><a href="http://caniuse.com/#feat=css-grid">Can I use</a></p>
+		<div class="browsers">
+			<span><img src="pictures/chrome_128x128.png"></span>
+			<span><img src="pictures/firefox_128x128.png"></span>
+			<span><img src="pictures/safari_128x128.png"></span>
+			<span><img src="pictures/edge_128x128.png"><sup class="browsers__note">*</sup></span>
+			<span><img src="pictures/opera_128x128.png"></span>
+		</div>
+		<p class="note">* Old version of specification, Microsoft work on current version</p>
+	</section>
+
+
+	<section class="slide">
+		<h2>Grid Container</h2>
+		<div class="table">
+			<div class="table__line table__line-1"></div>
+			<div class="table__line table__line-4"></div>
+			<div class="table__line table__line-5"></div>
+			<div class="table__line table__line-8"></div>
+		</div>
 	</section>
 
 	<section class="slide">
-		<h2>All kind of lists</h2>
-		<ol>
-			<li>Simple lists are marked with bullets</li>
-			<li>Ordered lists begin with a number</li>
-			<li>You can even nest lists one inside another
-				<ul>
-					<li>Or mix their types</li>
-					<li>But do not go too far</li>
-					<li>Otherwise audience will be bored</li>
-				</ul>
-			</li>
-			<li>Look, seven rows exactly!</li>
-		</ol>
+		<h2>Grid Line</h2>
+		<div class="table">
+			<div class="table__line table__line-1 next"></div>
+			<div class="table__line table__line-2 next"></div>
+			<div class="table__line table__line-3 next"></div>
+			<div class="table__line table__line-4 next"></div>
+
+			<div class="table__line table__line-5 next"></div>
+			<div class="table__line table__line-6 next"></div>
+			<div class="table__line table__line-7 next"></div>
+			<div class="table__line table__line-8 next"></div>
+		</div>
 	</section>
 
 	<section class="slide">
-		<h2>Serious citations</h2>
-		<figure>
-			<blockquote>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
-			</blockquote>
-			<figcaption>Marcus Tullius Cicero</figcaption>
-		</figure>
+		<h2>Grid Track</h2>
+		<div class="table">
+			<div class="table__line table__line-1"></div>
+			<div class="table__line table__line-2"></div>
+			<div class="table__line table__line-3"></div>
+			<div class="table__line table__line-4"></div>
+
+			<div class="table__line table__line-5"></div>
+			<div class="table__line table__line-6"></div>
+			<div class="table__line table__line-7"></div>
+			<div class="table__line table__line-8"></div>
+
+			<div class="table__box table__track-1"></div>
+		</div>
 	</section>
 
 	<section class="slide">
-		<h2>Code samples</h2>
+		<h2>Grid Track</h2>
+		<div class="table">
+			<div class="table__line table__line-1"></div>
+			<div class="table__line table__line-2"></div>
+			<div class="table__line table__line-3"></div>
+			<div class="table__line table__line-4"></div>
+
+			<div class="table__line table__line-5"></div>
+			<div class="table__line table__line-6"></div>
+			<div class="table__line table__line-7"></div>
+			<div class="table__line table__line-8"></div>
+
+			<div class="table__box table__track-2"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Grid Cell</h2>
+		<div class="table">
+			<div class="table__line table__line-1"></div>
+			<div class="table__line table__line-2"></div>
+			<div class="table__line table__line-3"></div>
+			<div class="table__line table__line-4"></div>
+
+			<div class="table__line table__line-5"></div>
+			<div class="table__line table__line-6"></div>
+			<div class="table__line table__line-7"></div>
+			<div class="table__line table__line-8"></div>
+
+			<div class="table__box table__cell-1"></div>
+			<div class="table__box table__cell-2"></div>
+			<div class="table__box table__cell-3"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Grid Area</h2>
+		<div class="table">
+			<div class="table__line table__line-1"></div>
+			<div class="table__line table__line-2"></div>
+			<div class="table__line table__line-3"></div>
+			<div class="table__line table__line-4"></div>
+
+			<div class="table__line table__line-5"></div>
+			<div class="table__line table__line-6"></div>
+			<div class="table__line table__line-7"></div>
+			<div class="table__line table__line-8"></div>
+
+			<div class="table__box table__area"></div>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2>Prepare</h2>
 		<pre>
-			<code>&lt;!DOCTYPE html&gt;</code>
-			<code class="mark">&lt;html lang="en"&gt;</code>
-			<code><mark>&lt;head&gt;</mark> <span class="comment">&lt;!--Comment--&gt;</span></code>
-			<code>    &lt;title&gt;Shower&lt;/title&gt;</code>
-			<code>    &lt;meta charset="<mark class="important">UTF-8</mark>"&gt;</code>
-			<code>    &lt;link rel="stylesheet" href="screen.css"&gt;</code>
-			<code><mark>&lt;/head&gt;</mark></code>
+			<code>&lt;div class="<mark>sample</mark>"&gt;</code>
+			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
+			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
+			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
+			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
+			<code>	&lt;div class="<mark>sample__item</mark>"&gt;&lt;/div&gt;</code>
+			<code>&lt;/div&gt;</code>
 		</pre>
 	</section>
 
 	<section class="slide">
-		<h2>Even tables</h2>
-		<table>
-		<tr>
-			<th scope="col">Locavore</th>
-			<th>Umami</th>
-			<th>Helvetica</th>
-			<th>Vegan</th>
-		</tr>
-		<tr>
-			<th scope="row">Fingerstache</th>
-			<td>Kale</td>
-			<td>Chips</td>
-			<td>Keytar</td>
-		</tr>
-		<tr>
-			<th scope="row">Sriracha</th>
-			<td>Gluten-free</td>
-			<td>Ennui</td>
-			<td>Keffiyeh</td>
-		</tr>
-		<tr>
-			<th scope="row">Thundercats</th>
-			<td>Jean</td>
-			<td>Shorts</td>
-			<td>Biodiesel</td>
-		</tr>
-		<tr>
-			<th scope="row">Terry</th>
-			<td>Richardson</td>
-			<td>Swag</td>
-			<td>Blog</td>
-		</tr>
-		</table>
-		<p>It’s good to have information organized.</p>
+		<h2>Prepare</h2>
+		<pre>
+			<code>.sample { <span class="comment">/* Пока пусто */</span> }</code>
+			<code>.sample__item {</code>
+			<code>	background: <mark style="background: #7D7D7D;color: #FFF">#7D7D7D</mark>;</code>
+			<code>	}</code>
+			<code>.sample__item<mark>:first-child</mark> { background: <mark style="background: #006699;color: #FFF">#006699</mark> }</code>
+			<code>.sample__item<mark>:last-child</mark> { background: <mark style="background: #44AAAA;color: #FFF">#44AAAA</mark> }</code>
+			<code>.sample__item<mark>::before</mark> { content: <mark>counter(list)</mark> }</code>
+		</pre>
 	</section>
 
-	<section class="slide" id="picture">
-		<h2>Pictures</h2>
+	<section class="slide">
+		<h2>Blank. No Grid</h2>
+		<div class="sample sample--disabled">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2>Auto rendering</h2>
+		<pre class="place" style="font-size: 50px">
+			<code>.sample {</code>
+			<code>	<mark>display: grid;</mark></code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>First grid</h2>
+		<div class="sample">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2>Columns?</h2>
+		<pre>
+			<code><mark>.sample</mark> {</code>
+			<code>	grid-template-columns: <mark>1fr 1fr</mark>;</code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Columns!</h2>
+		<div class="sample sample--two-cols">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>More items...</h2>
+		<div class="sample sample--two-cols">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>More...</h2>
+		<div class="sample sample--two-cols">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>...</h2>
+		<div class="sample sample--two-cols">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>...</h2>
+		<div class="sample sample--two-cols">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Three columns?</h2>
+		<pre>
+			<code><mark>.sample</mark> {</code>
+			<code>	grid-template-columns: <mark>1fr 1fr 1fr</mark>;</code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Three columns</h2>
+		<div class="sample sample--three-cols">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Proportionally?</h2>
+		<pre>
+			<code><mark>.sample</mark> {</code>
+			<code>	grid-template-columns: <mark>1fr 2fr 3fr</mark>;</code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Proportionally</h2>
+		<div class="sample sample--three-cols-asc">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Fix?</h2>
+		<pre>
+			<code><mark>.sample</mark> {</code>
+			<code>	grid-template-columns: <mark>250px 1fr 250px</mark>;</code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Fix</h2>
+		<div class="sample sample--three-cols-fixed">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2>Rows?</h2>
+		<pre>
+			<code><mark>.sample</mark> {</code>
+			<code>	grid-template-<mark>columns</mark>: 150px <mark>1fr</mark> 150px;</code>
+			<code>	grid-template-<mark>rows</mark>:	150px <mark>1fr</mark> 150px;</code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Rows</h2>
+		<div class="sample sample--three-cols-rows">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2 class="shout">Manual tuning</h2>
+	</section>
+
+	<section class="slide white">
+		<h2>Lines</h2>
+		<div class="table">
+			<div class="table__line table__line-1 next"></div>
+			<div class="table__line table__line-2 next"></div>
+			<div class="table__line table__line-3 next"></div>
+			<div class="table__line table__line-4 next"></div>
+
+			<div class="table__line table__line-5 next"></div>
+			<div class="table__line table__line-6 next"></div>
+			<div class="table__line table__line-7 next"></div>
+			<div class="table__line table__line-8 next"></div>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2>Prepare</h2>
+		<div class="sample sample--manual">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+
+
+	<section class="slide">
+		<h2>Header and Footer?</h2>
+		<pre>
+			<code><mark>.sample</mark> :nth-child(1) {</code>
+			<code>	grid-column: <mark>1 / 4</mark>;</code>
+			<code>	}</code>
+			<code><mark>.sample</mark> :nth-child(5) {</code>
+			<code>	grid-column: <mark>1 / 4</mark>;</code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>Header and Footer</h2>
+		<div class="sample sample--manual-header-footer">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Footer and header?</h2>
+		<div class="pre-grid">
+			<pre class="half">
+				<code><mark>.sample</mark> :nth-child(1) {</code>
+				<code>	grid-row: <mark>3 / 4</mark>;</code>
+				<code>	}</code>
+				<code><mark>.sample</mark> :nth-child(5) {</code>
+				<code>	grid-row: <mark>1 / 2</mark>;</code>
+				<code>	}</code>
+			</pre>
+			<pre class="half">
+				<code><mark>.sample</mark> :nth-child(1) {</code>
+				<code>	grid-area: <mark>3 / 1 / 4 / 4</mark>;</code>
+				<code>	}</code>
+				<code><mark>.sample</mark> :nth-child(5) {</code>
+				<code>	grid-area: <mark>1 / 1 / 2 / 4</mark>;</code>
+				<code>	}</code>
+			</pre>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2>Footer and header</h2>
+		<div class="sample sample--manual-footer-header">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Area pattern, Prepare</h2>
+		<div class="sample">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Area pattern</h2>
+		<pre>
+			<code><mark>.sample</mark> {</code>
+			<code>	grid-template-areas:</code>
+			<code>		<mark>'a a a a'</mark></code>
+			<code>		'b <mark class="important">c c</mark> d'</code>
+			<code>		<mark>'e e e e'</mark>;</code>
+			<code>	}</code>
+		</pre>
+	</section>
+
+	<section class="slide">
+		<h2>A B C D E</h2>
+		<pre>
+			<code>.sample :nth-child(<mark>1</mark>) { grid-area: <mark>a</mark> }</code>
+			<code>.sample :nth-child(<mark>2</mark>) { grid-area: <mark>b</mark> }</code>
+			<code>.sample :nth-child(<mark>3</mark>) { grid-area: <mark>c</mark> }</code>
+			<code>.sample :nth-child(<mark>4</mark>) { grid-area: <mark>d</mark> }</code>
+			<code>.sample :nth-child(<mark>5</mark>) { grid-area: <mark>e</mark> }</code>
+		</pre>
+	</section>
+
+	<section class="slide white">
+		<div class="sample sample--ascii-sorted sample--whole">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>B A E C D</h2>
+		<pre>
+			<code>.sample :nth-child(<mark>1</mark>) { grid-area: <mark>b</mark> }</code>
+			<code>.sample :nth-child(<mark>2</mark>) { grid-area: <mark>a</mark> }</code>
+			<code>.sample :nth-child(<mark>3</mark>) { grid-area: <mark>e</mark> }</code>
+			<code>.sample :nth-child(<mark>4</mark>) { grid-area: <mark>c</mark> }</code>
+			<code>.sample :nth-child(<mark>5</mark>) { grid-area: <mark>d</mark> }</code>
+		</pre>
+	</section>
+
+	<section class="slide white">
+		<div class="sample sample--ascii-random sample--whole">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide">
+		<h2>Area pattern</h2>
+		<div class="pre-grid">
+			<pre class="half">
+				<code><mark>.sample</mark> {</code>
+				<code>	grid-template-areas:</code>
+				<code>		'a a a a'</code>
+				<code>		<mark>'b c c d'</mark></code>
+				<code>		'e e e e';</code>
+				<code>	}</code>
+			</pre>
+			<pre class="half">
+				<code><mark>.sample</mark> {</code>
+				<code>	grid-template-areas:</code>
+				<code>		'a a a a'</code>
+				<code>		<mark>'b c c d'</mark></code>
+				<code>		<mark>'b c c d'</mark></code>
+				<code>		'e e e e';</code>
+				<code>	}</code>
+			</pre>
+	</section>
+
+	<section class="slide white">
+		<div class="sample sample--ascii-sorted sample--whole">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+	<section class="slide white">
+		<div class="sample sample--ascii-tall sample--whole">
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+			<div class="sample__item"></div>
+		</div>
+	</section>
+
+
+	<section class="slide">
+		<h2>Grid Container Properties</h2>
+		<ul class="double">
+			<li><code>display</code></li>
+			<li><code>grid-template-columns</code></li>
+			<li><code>grid-template-rows</code></li>
+			<li><code>grid-template-areas</code></li>
+			<li><code>grid-template</code></li>
+			<li><code>grid-column-gap</code></li>
+			<li><code>grid-row-gap</code></li>
+			<li><code>grid-gap</code></li>
+			<li><code>justify-items</code></li>
+			<li><code>align-items</code></li>
+			<li><code>justify-content</code></li>
+			<li><code>align-content</code></li>
+			<li><code>grid-auto-columns</code></li>
+			<li><code>grid-auto-rows</code></li>
+			<li><code>grid-auto-flow</code></li>
+			<li><code>grid</code></li>
+		</ul>
+	</section>
+
+	<section class="slide">
+		<h2>Grid Item Properties</h2>
+		<ul class="double">
+			<li><code>grid-column-start</code></li>
+			<li><code>grid-column-end</code></li>
+			<li><code>grid-row-start</code></li>
+			<li><code>grid-row-end</code></li>
+			<li><code>grid-column</code></li>
+			<li><code>grid-row</code></li>
+			<li><code>grid-area</code></li>
+			<li><code>justify-self</code></li>
+			<li><code>align-self</code></li>
+		</ul>
+		<p><a href="http://chris.house/blog/a-complete-guide-css-grid-layout/">A Complete Guide to CSS Grid Layout</a></p>
+	</section>
+
+	<section class="slide">
+		<h2>Migration</h2>
+		<div class="pre-grid">
+			<pre class="half">
+				<code>@supports (display: grid) {</code>
+				<code>  .grid {</code>
+				<code>    display: <mark>grid</mark>;</code>
+				<code>  }</code>
+			</pre>
+			<pre class="half">
+				<code>@supports <mark>not</mark> (display: grid) {</code>
+				<code>  .grid {</code>
+				<code>    display: <mark>flex</mark>;</code>
+				<code>  }</code>
+			</pre>
+		</div>
+		<p><a href="https://alistapart.com/article/practical-grid">Practical CSS Grid: Adding Grid to an Existing Design</a>, by Eric Meyer</p>
+	</section>
+
+	<section class="slide">
+		<h2>Forget Flexbox?</h2>
 		<figure>
-			<img class="cover" src="pictures/picture.jpg" alt="Orange typewriter on a wooden table close-up">
-			<figcaption class="white">
-				<a href="http://fiftyfootshadows.net/">© John Carey</a>
-			</figcaption>
+			<blockquote>
+				<p>... grid for the overall layout, a mix of nested flexboxes and grid for the components of the page, and finally block/inline/table layout at the "leaves" of the page, where the text and content live.</p>
+			</blockquote>
+			<figcaption>Tab Atkins, <a href="https://lists.w3.org/Archives/Public/www-style/2013May/0114.html">www-style</a></figcaption>
 		</figure>
-		<style>
-			#picture h2 {
-				color:#FFF;
-				}
-		</style>
+		<p><a href="https://www.chenhuijing.com/blog/css-grid-flexbox-combo/">Grid + Flexbox: the best 1-2 punch in web layout</a>, by Chen Hui Jing</p>
 	</section>
+
 
 	<section class="slide">
-		<h2 class="shout shrink">You can even shout this way</h2>
+		<h2>Links</h2>
+		<ul class="double">
+			<li><a href="http://gridbyexample.com/">Grid by Example</a></li>
+			<li><a href="http://igalia.github.io/css-grid-layout/">CSS Grid Layout Examples</a></li>
+			<li><a href="http://chris.house/blog/a-complete-guide-css-grid-layout/">A Complete Guide to Grid</a></li>
+			<li><a href="http://labs.jensimmons.com/">Intro to CSS Grid</a></li>
+			<li><a href="https://www.w3.org/TR/css3-grid-layout/">CSS Grid Layout Module</a></li>
+			<li><a href="https://www.w3.org/TR/css-align-3/">CSS Box Alignment Module</a></li>
+			<li><a href="http://sokr.me/grl">Original presentation</a></li>
+			<li><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties">Visual Guide to Flexbox</a></li>
+		</ul>
+		<p class="note">Created with <a href="https://shwr.me/">Shower</a></p>
+		<img class="place bottom right" width="100px" src="pictures/logo.png">
 	</section>
-
-	<section class="slide">
-		<h2>Inner navigation</h2>
-		<ol>
-			<li>Lets you reveal list items one by one</li>
-			<li class="next">To keep some key points</li>
-			<li class="next">In secret from audience</li>
-			<li class="next">But it will work only once</li>
-			<li class="next">Nobody wants to see the same joke twice</li>
-		</ol>
-	</section>
-
-	<section class="slide grid">
-		<h2>All nicely aligned to grid</h2>
-	</section>
-
-	<section class="slide" id="see-more">
-		<h2 class="shout">
-			<img src="pictures/logo.svg" alt="Shower logo">
-			<a href="https://github.com/shower/shower">See more on GitHub</a>
-		</h2>
-		<style>
-			#see-more h2 {
-				font-size:100px
-				}
-			#see-more img {
-				width:0.72em;
-				height:0.72em;
-				}
-		</style>
-	</section>
-
-	<footer class="badge">
-		<a href="https://github.com/shower/shower">Fork me on GitHub</a>
-	</footer>
 
 	<div class="progress"></div>
 
 	<script src="node_modules/shower-core/shower.min.js"></script>
-	<!-- Copyright © 2017 Yours Truly, Famous Inc. -->
 
 </body>
 </html>
