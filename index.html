@@ -24,11 +24,11 @@
 	<section class="slide">
 		<h2>Test types</h2>
 		<ul>
-			<li class="next">Unit tests</li>
-			<li class="next">Component tests</li>
-			<li class="next">Integration tests</li>
-			<li class="next">E2E tests</li>
-			<li class="next">Sanity tests</li>
+			<li>Unit tests</li>
+			<li>Component tests</li>
+			<li>Integration tests</li>
+			<li>E2E tests</li>
+			<li>Sanity tests</li>
 		</ul>
 	</section>
 
@@ -37,6 +37,7 @@
 		<h2>Conventions, concepts, patterns</h2>
 		<ul>
 			<li class="next">File Co-location</li>
+			<li class="next">Plan/Design tests</li>
 			<li class="next">Reuse tests</li>
 			<li class="next">Test Data</li>
 			<li class="next">Page Object</li>
@@ -47,10 +48,10 @@
 	<section class="slide">
 		<h2>File Co-location</h2>
 		<ul>
-			<li><b>For code</b><br>(view, actions, reducers, controllers, models, collections, etc.)</li>
-			<li><b>For test</b><br>(specs, po, test, data, fixtures, etc.)</li>
+			<li class="next"><b>For code</b><br>(view, actions, reducers, controllers, models, collections, etc.)</li>
+			<li class="next"><b>For test</b><br>(specs, po, test, data, fixtures, etc.)</li>
 		</ul>
-		<p class="note">Some links:
+		<p class="next note">Some links:
 			<a href="https://marmelab.com/blog/2015/12/17/react-directory-structure.html">React dir structure</a>,
 			<a href="http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript">Code organization</a>
 			<a href="http://islovely.co/posts/colocating-unit-tests/">Co-location Unit tests</a>
@@ -60,42 +61,80 @@
 
 	<section class="slide">
 		<h2>Reuse Tests</h2>
-		<p>Example: <a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/master/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorTest.coffee">Seed Selector Test</a></p>
+		<!-- <p>Example: <a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/master/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorTest.coffee">Seed Selector Test</a></p> -->
 		<pre><code>checkHeaders: (<mark>checkData</mark>) ->
-  test = this
    describe "Check header-bar rendering:", ->
      it 'should have correct selected seeds header', () ->
-       expect(test.moSeedsSelector.getBemEl('seeds'))
-			.toHaveText(<mark>checkData.seeds</mark>)
-...</code></pre>
+       expect(po.getEl('seeds'))
+			.toHaveText(<mark>checkData.seeds</mark>)</code></pre>
+		<img class="place bottom right header-bar1" src="pictures/testing/headerBar1.png">
+		<img class="next place bottom right header-bar2" src="pictures/testing/headerBar2.png">
+	</section>
+
+
+	<section class="slide white">
+		<h2>Test Data</h2>
+		<ul>
+			<li class="next">Don't hardcore names, ids, check values, etc.</li>
+			<li class="next">List tests variants
+				<img class="place right top" style="margin-top: 2.5em; width:400px;" src="pictures/testing/testData.png">
+			</li>
+			<li class="next">List of scenarios
+				<p class="place right bottom" style="margin-bottom: 0.8em; width:400px; height:275px; overflow: scroll;">
+					<img style="  position: absolute; top: 0; left: 0;" src="pictures/testing/testDataScenarios.png">
+				</p>
+			</li>
+		</ul>
+		<p class="next note">Examples:<br>
+			<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/indexReportTestData.coffee">Index Report Test Data</a>,<br>
+			<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/master/src/main/modules/indexReport/seedsSelector/specs/seedsSelectorTestData.coffee">Seed Selector Test Data</a>
+		</p>
 	</section>
 
 
 	<section class="slide">
-		<h2>Test Data</h2>
-		<ul>
-			<li>Don't hardcore Names, Ids, Check values, etc.</li>
-			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/indexReportTestData.coffee">Index Report Test Data</a></li>
-			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/master/src/main/modules/indexReport/seedsSelector/specs/seedsSelectorTestData.coffee">Seed Selector Test Data</a></li>
-		</ul>
+		<h2>Reuse and Test Data</h2>
+		<pre><code>describe "When open/close Seed Selector:", ->
+	<mark>test.checkOpening()</mark>
+
+describe "When open/close (i.e. cancel) Seed Selector:", ->
+	<mark>test.checkOpening('back')</mark></code></pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Reuse and Test Data</h2>
+		<pre><code>describe "When selecting seed UNDER UU limit:", ->
+	test.checkLimitUu(<mark>'simple'</mark>)
+
+describe "When selecting seed OVER UU limit:", ->
+	test.checkLimitUu(<mark>'altruism'</mark>)</code></pre>
 	</section>
 
 
 	<section class="slide">
 		<h2>Page Object</h2>
 		<ul>
-			<li>We try to split out tests for reusable parts and use PageObject patterns not only for E2E tests, but for Component and Integrations as well.</li>
-			<li><a href="http://webdriver.io/guide/testrunner/pageobjects.html">Page Object</a></li>
-			<li><a href="https://www.thoughtworks.com/insights/blog/using-page-objects-overcome-protractors-shortcomings">Page Object Protractor</a></li>
-			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/IndexReportPageObject.coffee">Index Report Page Object</a></li>
-			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorPageObject.coffee">Seed Selector Page Object</a></li>
-			<li><a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorModuleObject.coffee">Module Object</a></li>
+			<li class="next">Use PageObject pattern for Integration (and even Component) tests, <nobr>not only for E2E</nobr></li>
+			<li class="next">Some links:
+				<a href="http://webdriver.io/guide/testrunner/pageobjects.html">Page Object</a>,
+				<a href="https://www.thoughtworks.com/insights/blog/using-page-objects-overcome-protractors-shortcomings">Page Object Protractor</a>
+			<li class="next">Once again about reuse:<br> Page Object -> Module Object
+				<p class="place right bottom" style="margin-bottom: 0.8em; width:580px; height:275px; overflow: scroll;">
+					<img style="  position: absolute; top: 0; left: 0;  width: 600px;" src="pictures/testing/pageObject.png">
+				</p>
+			</li>
 		</ul>
+		<p class="next note">Examples:<br>
+			<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/IndexReportPageObject.coffee">Index Report Page Object</a>,<br>
+			<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorPageObject.coffee">Seed Selector Page Object</a>,<br>
+			<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/seedsSelector/specs/SeedsSelectorModuleObject.coffee">Module Object</a>
+		</p>
 	</section>
 
 
 	<section class="slide">
-		<h2>Tests for ... ?</h2>
+		<h2>Tests for ... types</h2>
 		<ul>
 			<li class="next">New Component</li>
 			<li class="next">New module/page/app</li>
@@ -195,7 +234,7 @@ describe 'When call _onRenderStateChanged callback:', ->
 	</section>
 
 
-	<section class="slide">
+	<section class="slide white">
 		<p class="place"><img src="pictures/testing/testData1.png"></p>
 	</section>
 
@@ -215,22 +254,162 @@ describe 'When call _onRenderStateChanged callback:', ->
 	</section>
 
 
-
-
 	<section class="slide">
 		<h2 class="shout">Integration Tests</h2>
 	</section>
 
-
 	<section class="slide">
-		<h2 class="shout">Tests for new functionality at current modules</h2>
+		<h2>Integrations tests</h2>
+		<ul>
+			<li class="next">Patterns: PageObject, TestData, Reusable tests, etc.</li>
+			<li class="next">Split page to parts for Integration Tests (modules)</li>
+			<li class="next">Scenario for tests and Independent tests</li>
+			<li class="next">Mocks and Fixtures (Kakapo, Nock, JSON-fixtures)</li>
+			<li class="next">Actions and Check methods</li>
+			<li class="next">Asynchronous actions and tests</li>
+		</ul>
+		<p class="next note">Examples:<br>
+			<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/specs/">Index Report</a>,<br>
+			<a href="https://github.com/xl8/webapps-maxdmp-frontend/blob/develop/src/main/modules/indexReport/seedsSelector/specs/">Seed Selector</a>
+		</p>
+	</section>
+
+	<section class="slide white">
+		<p class="cover"><img src="pictures/testing/indexReport.png"></p>
 	</section>
 
 
+	<section class="slide">
+		<h2>Scenario Example</h2>
+		<ul>
+			<li class="next">Seed selector works in several modes; Init, In-Process, Ready</li>
+			<li class="next">Different scenarios for different modes</li>
+			<li class="next">Base Tests:
+				<ul>
+					<li class="next">Seed Selector Initialization</li>
+					<li class="next">Rendering (for each mode)</li>
+					<li class="next">Seed selection for order first/init Report</li>
+					<li class="next">Cancel report from in-process mode</li>
+					<li class="next">Re-order report (i.e. order new report with other paramters)</li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+
+	<section class="slide white" style="padding: 0">
+		<img style="width: 100%" src="pictures/testing/pageObject.png">
+	</section>
+
+	<section class="slide">
+		<h2>Scenario Example: Details</h2>
+		<ul>
+			<li class="next">Open/Close seed selection</li>
+			<li class="next">Select Seeds</li>
+			<li class="next">Change Data range</li>
+			<li class="next">Check header changes depend of Selectors changes</li>
+			<li class="next">Check UU indicator (under limit notification)</li>
+			<li class="next">Other error use cases (segments collection or timeline data not loaded)</li>
+			<li class="next">Segments Bucket behaviour</li>
+			<li class="next">Buttons behaviour (disable status, changes according mode or UU value, etc.)</li>
+		</ul>
+	</section>
 
 
+	<section class="slide">
+		<h2>Module we want to test in code</h2>
+		<pre><code>@addChild('selectSeeds', SeedsSelector, <mark>$container</mark>, {
+  mode: 'primary'
+  seedType: 'segments'
+  permissions: <mark>@permissions</mark>
+  indexCategoriesCollection: <mark>@indexCategoriesCollection</mark>
+  seedGroupCollection: @segmentCategoryCollection
+  segmentByDisplayCollection: @segmentByDisplayCollection
+  state: <mark>@state</mark>
+})</code></pre>
+	</section>
 
 
+	<section class="slide">
+		<h2>Same module at Page Object of Test</h2>
+		<pre><code>@viewController = new SeedsSelector($fixture, {
+  mode: 'primary'
+  seedType: 'segments'
+  permissions: <mark>@mockedPermissions</mark> #JSON-fixture
+  indexCategoriesCollection: <mark>@mockedCollection</mark> #kakapo
+  seedGroupCollection: @segmentCategoryCollection
+  segmentByDisplayCollection: @segmentByDisplayCollection
+  state: <mark>@mockedState</mark> #emulation
+})</code></pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Actions and Tests (Checks)</h2>
+		<pre><code>checkOpening: () ->
+  return [
+    test.<mark>doOpen</mark>()
+    it "should have audiences category", () ->
+      <mark>expect</mark>(po.getCategories()).toEqual(mode.categories)
+    test.<mark>doClose()</mark>
+  ]</code></pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Action example</h2>
+		<pre><code>doOpen: =>
+  it '-OPEN seed-selector by clicking on header-bar', (done) ->
+    <mark>po.doOpen()</mark>
+    wait(po.getSeedGroupSelectBoxEl)
+      .then(-> wait(po.getCategorySelectBoxEl))
+      .catch(fail)
+      .then(done)</code></pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Asynchronous: doChangeDateRangeRadio</h2>
+		<pre style="height:80%; overflow:scroll;"><code>it "-CHANGE data range radio for `#{scenario.id}`", (done) ->
+    po.doOpen()
+    wait(<mark>po.doSelectSeedGroup</mark>, scenario)
+      .then(po.doOpenSeedsFilter)
+      .then(-> wait(<mark>po.fetchSegmentCollection</mark>))
+      .then(-> po.doClickOnSegment(scenario.segmentId))
+      .then(-> wait(po.fetchSegmentByDisplayCollection))
+      .then(-> wait(<mark>po.enabledDateRangeFilterDropDownContainer</mark>))
+      .then(-> po.doOpenDateRangeFilter())
+      .then(-> po.doChangeDateRangeRadio(scenario.radio))
+      #<mark>.then(sleep)</mark> # TODO: check and change (date range change debounce)
+      #.then(-> wait(po.fetchUuModel))
+      .then(-> wait(po.enabledButton))
+      .catch(fail).then(done)</code></pre>
+	</section>
+
+
+	<section class="slide">
+		<h2>Tests for new functionality at current modules</h2>
+		<ul>
+			<li class="next">You'll use tes same or similar approaches</li>
+			<li class="next">Split added/changed code to separate functions/modules</li>
+			<li class="next">Unit, Component, Integration tests</li>
+			<li class="next">You SHOULDN'T test old code if you don't change it</li>
+			<li class="next">But, You CAN test some old code/functionality</li>
+		</ul>
+	</section>
+
+
+	<section class="slide">
+		<h2>Some results of Pilots</h2>
+		<ul>
+			<li class="next">Better quality: we got less bugs from backend</li>
+			<li class="next">More readable code (refactoring during tests)</li>
+			<li class="next">Find some rare cases (async errors)</li>
+			<li class="next">Find and fixed back-end/network error cases</li>
+			<li class="next">We start to fill that we can make changes...</li>
+		</ul>
+	</section>
+
+<!--
 	<section class="slide">
 		<h2>You have to add some cool quote at the end...</h2>
 		<figure>
@@ -253,6 +432,10 @@ describe 'When call _onRenderStateChanged callback:', ->
 		</ul>
 		<p class="note">Created with <a href="https://shwr.me/">Shower</a></p>
 		<img class="place bottom right" width="100px" src="pictures/logo.png">
+	</section>
+-->
+	<section class="slide">
+		<h2 class="shout">Questions</h2>
 	</section>
 
 	<div class="progress"></div>
